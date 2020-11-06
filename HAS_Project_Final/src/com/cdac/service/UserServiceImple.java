@@ -1,0 +1,38 @@
+package com.cdac.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cdac.dao.UserDao;
+import com.cdac.dto.User;
+
+@Service
+public class UserServiceImple implements UserService {
+ 
+	@Autowired
+	private UserDao userDao;
+	
+	@Override
+	public void addUser(User user) {
+		userDao.insertUser(user);
+	}
+
+	@Override
+	public String findUser(User user) {
+		
+		return userDao.checkUser(user);
+	}
+
+	@Override
+	public boolean checkNewUserrr(User user) {
+		
+		return userDao.checkNewUser(user);
+	}
+
+	@Override
+	public String forgotPassword(String userEmailId) {
+		return userDao.forgotPassword(userEmailId);
+	}
+
+
+}
